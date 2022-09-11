@@ -1,0 +1,2 @@
+One Liners Host Header Injection For Scannings List
+cat list.txt| while read host do; do curl -H 'Host:malwaresite.com' --silent --path-as-is --insecure "$host" -vs 2>&\1 |grep -qa "malwaresite.com" && echo "$host \033[0;31mVulnerable Host Header Injection Reflected Body\n" || echo "$host \003[0;32mNot Vulnerable\n"; done
